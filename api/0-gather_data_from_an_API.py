@@ -32,8 +32,8 @@ for i, j in my_tsks:
                 print(j)
                 counter_tsks += 1
 
-print(f"Employee {name_us} is done with tasks({counter_tsks}/20):")
+print("Employee {} is done with tasks({}/20):".format(name_us, counter_tsks))
 
 for i, j in my_tsks:
         if i == True:
-                print(f"\t {j}")
+                print("\t {}".format(j))
