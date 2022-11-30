@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     my_tsks = [
         (i["completed"], i["title"]) for i in tsks
-         if "completed" or "title" in i
+        if "completed" or "title" in i
     ]
 
     for i, j in my_tsks:
