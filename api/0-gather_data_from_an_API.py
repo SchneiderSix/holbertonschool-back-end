@@ -31,15 +31,17 @@ if __name__ == "__main__":
     name_us = res_us["name"]
 
     my_tsks = [
-        (i["completed"], i["title"]) for i in tsks if "completed" or "title" in i
+        (i["completed"], i["title"]) for i in tsks
+         if "completed" or "title" in i
     ]
 
     for i, j in my_tsks:
-        if i == True:
+        if i is True:
             counter_tsks += 1
 
-    print("Employee {} is done with tasks({}/20):".format(name_us, counter_tsks))
+    print("Employee {} is done with tasks({}/20):"
+          .format(name_us, counter_tsks))
 
     for i, j in my_tsks:
-        if i == True:
+        if i is True:
             print("\t {}".format(j))
