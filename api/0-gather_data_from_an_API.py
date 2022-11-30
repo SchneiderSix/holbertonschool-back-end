@@ -10,33 +10,35 @@ import json
 from sys import argv
 
 
-res = requests.get("https://jsonplaceholder.typicode.com/todos/?userId={}".format(argv[1]))
-tsks = json.loads(res.text)
-usrs = requests.get("https://jsonplaceholder.typicode.com/users")
-us = json.loads(usrs.text)
+if __name__ == '__main__':
 
-res_us  = {}
-counter = 0
-counter_tsks = 0
-nid = int(argv[1])
+        res = requests.get("https://jsonplaceholder.typicode.com/todos/?userId={}".format(argv[1]))
+        tsks = json.loads(res.text)
+        usrs = requests.get("https://jsonplaceholder.typicode.com/users")
+        us = json.loads(usrs.text)
 
-for line in us:
-        counter += 1
-        res_us.update(line)
-        if counter  == nid:
-                break
+        res_us  = {}
+        counter = 0
+        counter_tsks = 0
+        nid = int(argv[1])
 
-name_us = res_us['name']
+        for line in us:
+                counter += 1
+                res_us.update(line)
+                if counter  == nid:
+                        break
 
-my_tsks = [(i['completed'], i['title']) for i in tsks if "completed" or "title" in i]
+        name_us = res_us['name']
 
-for i, j in my_tsks:
-        if i == True:
-                print(j)
-                counter_tsks += 1
+        my_tsks = [(i['completed'], i['title']) for i in tsks if "completed" or "title" in i]
 
-print("Employee {} is done with tasks({}/20):".format(name_us, counter_tsks))
+        for i, j in my_tsks:
+                if i == True:
+                        print(j)
+                        counter_tsks += 1
 
-for i, j in my_tsks:
-        if i == True:
-                print("\t {}".format(j))
+        print("Employee {} is done with tasks({}/20):".format(name_us, counter_tsks))
+
+        for i, j in my_tsks:
+                if i == True:
+                        print("\t {}".format(j))
