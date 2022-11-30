@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """
-Module 0-gather_data_from_an_API
+Write a Python script that, using this REST API,
+for a given employee ID,
+returns information about his/
+her TODO list progress.
 """
 import requests
 import json
