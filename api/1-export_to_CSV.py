@@ -33,21 +33,22 @@ if __name__ == "__main__":
         if "completed" or "title" in i
     ]
 
+    counter = 0
     for i, j in my_tsks:
         if i is True:
-            csv_list.append("{}".format(str(nid)))
+            csv_list.append("{}".format(nid))
             csv_list.append("{}".format(name_us))
             csv_list.append("True")
             csv_list.append("{}".format(j))
         else:
-            csv_list.append("{}".format(str(nid)))
+            csv_list.append("{}".format(nid))
             csv_list.append("{}".format(name_us))
             csv_list.append("False")
             csv_list.append("{}".format(j))
-
+        counter += 1
     print(name_us)
     print(csv_list)
 
-    with open('{}'.format(nid), 'w') as fp:
+    with open('{}.csv'.format(nid), 'w') as fp:
         writer = csv.writer(fp)
         writer.writerow(csv_list)
