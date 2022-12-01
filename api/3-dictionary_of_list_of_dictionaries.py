@@ -40,11 +40,11 @@ if __name__ == "__main__":
     for i, j, k in my_tsks:
         json_dict.setdefault(k, [])
         if i is True:
-            json_dict[k].append(dict(task=j,
-                                     completed=True, username=usns[k - 1]))
+            json_dict[k].append(dict(username=usns[k - 1], task=j,
+                                     completed=True))
         else:
-            json_dict[nid].append(dict(task=j,
-                                       completed=False, username=usns[k - 1]))
+            json_dict[nid].append(dict(username=usns[k - 1], task=j,
+                                       completed=False))
 
     ob_json = json.dumps(json_dict)
     with open("todo_all_employees.json", "w") as fp:
