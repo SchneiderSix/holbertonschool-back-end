@@ -36,10 +36,10 @@ if __name__ == "__main__":
     for i, j in my_tsks:
         if i is True:
             json_dict[nid].append(dict(task=j,
-                                       completed="true", username=name_us))
+                                       completed=True, username=name_us))
         else:
             json_dict[nid].append(dict(task=j,
-                                       completed="false", username=name_us))
+                                       completed=False, username=name_us))
 
     ob_json = json.dumps(json_dict)
     with open("{}.json".format(nid), "w") as fp:
