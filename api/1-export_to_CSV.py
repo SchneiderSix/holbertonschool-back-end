@@ -50,9 +50,6 @@ if __name__ == "__main__":
             csv_list.append(csv_row)
             csv_row = []
 
-    print(name_us)
-    print(csv_list)
-
     with open('{}.csv'.format(nid), 'w') as fp:
         writer = csv.writer(fp)
         writer.writerow(csv_list)
