@@ -43,7 +43,7 @@ if __name__ == "__main__":
             json_dict[k].append(dict(username=usns[k - 1], task=j,
                                      completed=True))
         else:
-            json_dict[nid].append(dict(username=usns[k - 1], task=j,
+            json_dict[k].append(dict(username=usns[k - 1], task=j,
                                        completed=False))
 
     ob_json = json.dumps(json_dict)
