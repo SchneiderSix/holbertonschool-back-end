@@ -2,8 +2,8 @@
 """
 Module 1-export_to_CSV
 """
-import json
 import csv
+import json
 import requests
 from sys import argv
 
