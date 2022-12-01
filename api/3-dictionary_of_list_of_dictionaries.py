@@ -25,7 +25,6 @@ if __name__ == "__main__":
     for line in us:
         res_us["users"].append(line)
 
-    #print(res_us)
     name_us = res_us["users"]
     while True:
         usns.append(name_us[count]["username"])
@@ -42,7 +41,7 @@ if __name__ == "__main__":
         json_dict.setdefault(k, [])
         if i is True:
             json_dict[k].append(dict(task=j,
-                                       completed=True, username=usns[k - 1]))
+                                     completed=True, username=usns[k - 1]))
         else:
             json_dict[nid].append(dict(task=j,
                                        completed=False, username=usns[k - 1]))
