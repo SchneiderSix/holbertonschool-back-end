@@ -45,7 +45,6 @@ if __name__ == "__main__":
             csv_list.append("False")
             csv_list.append("{}".format(j))
 
-
     print(name_us)
     print(csv_list)
 
