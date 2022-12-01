@@ -2,10 +2,10 @@
 """
 Module 1-export_to_CSV
 """
-import csv
 import requests
 import json
 from sys import argv
+import csv
 
 
 if __name__ == "__main__":
@@ -19,6 +19,7 @@ if __name__ == "__main__":
     res_us = {}
     counter = 0
     csv_list = []
+    csv_row = []
     nid = int(argv[1])
 
     for line in us:
@@ -33,19 +34,22 @@ if __name__ == "__main__":
         if "completed" or "title" in i
     ]
 
-    counter = 0
     for i, j in my_tsks:
         if i is True:
-            csv_list.append("{}".format(nid))
-            csv_list.append("{}".format(name_us))
-            csv_list.append("True")
-            csv_list.append("{}".format(j))
+            csv_row.append("{}".format(nid))
+            csv_row.append("{}".format(name_us))
+            csv_row.append("True")
+            csv_row.append("{}".format(j))
+            csv_list.append(csv_row)
+            csv_row = []
         else:
-            csv_list.append("{}".format(nid))
-            csv_list.append("{}".format(name_us))
-            csv_list.append("False")
-            csv_list.append("{}".format(j))
-        counter += 1
+            csv_row.append("{}".format(nid))
+            csv_row.append("{}".format(name_us))
+            csv_row.append("False")
+            csv_row.append("{}".format(j))
+            csv_list.append(csv_row)
+            csv_row = []
+
     print(name_us)
     print(csv_list)
 
