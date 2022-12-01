@@ -44,7 +44,7 @@ if __name__ == "__main__":
                                      completed=True))
         else:
             json_dict[k].append(dict(username=usns[k - 1], task=j,
-                                       completed=False))
+                                     completed=False))
 
     ob_json = json.dumps(json_dict)
     with open("todo_all_employees.json", "w") as fp:
