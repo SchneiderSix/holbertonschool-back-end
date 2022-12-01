@@ -2,6 +2,7 @@
 """
 Module 1-export_to_CSV
 """
+import csv
 import requests
 import json
 from sys import argv
@@ -17,7 +18,7 @@ if __name__ == "__main__":
     us = json.loads(usrs.text)
     res_us = {}
     counter = 0
-    counter_tsks = 0
+    csv_list = []
     nid = int(argv[1])
 
     for line in us:
@@ -25,7 +26,7 @@ if __name__ == "__main__":
         res_us.update(line)
         if counter == nid:
             break
-    name_us = res_us["name"]
+    name_us = res_us["username"]
 
     my_tsks = [
         (i["completed"], i["title"]) for i in tsks
@@ -34,11 +35,21 @@ if __name__ == "__main__":
 
     for i, j in my_tsks:
         if i is True:
-            counter_tsks += 1
+            csv_list.append("{}".format(str(nid)))
+            csv_list.append("{}".format(name_us))
+            csv_list.append("True")
+            csv_list.append("{}".format(j))
+        else:
+            csv_list.append("{}".format(str(nid)))
+            csv_list.append("{}".format(name_us))
+            csv_list.append("False")
+            csv_list.append("{}".format(j))
 
-    print("Employee {} is done with tasks({}/20):"
-          .format(name_us, counter_tsks))
 
-    for i, j in my_tsks:
-        if i is True:
-            print("\t {}".format(j))
+    print(name_us)
+    print(csv_list)
+
+
+with open('{}'.format(nid), 'w') as fp:
+    writer = csv.writer(fp)
+    writer.writerow(csv_list)
