@@ -29,7 +29,8 @@ if __name__ == "__main__":
     name_us = res_us["username"]
 
     my_tsks = [
-        (i["completed"], i["title"]) for i in tsks if "completed" or "title" in i
+        (i["completed"], i["title"]) for i in tsks
+        if "completed" or "title" in i
     ]
 
     for i, j in my_tsks:
@@ -44,10 +45,10 @@ if __name__ == "__main__":
             csv_list.append("False")
             csv_list.append("{}".format(j))
 
+
     print(name_us)
     print(csv_list)
 
-
-with open("{}".format(nid), "w") as fp:
-    writer = csv.writer(fp)
-    writer.writerow(csv_list)
+    with open('{}'.format(nid), 'w') as fp:
+        writer = csv.writer(fp)
+        writer.writerow(csv_list)
