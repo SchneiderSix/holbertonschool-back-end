@@ -3,8 +3,8 @@
 Module 1-export_to_CSV
 """
 import json
-import requests
 import csv
+import requests
 from sys import argv
 
 
