@@ -4,8 +4,8 @@ Module 1-export_to_CSV
 """
 import json
 import requests
-from sys import argv
 import csv
+from sys import argv
 
 
 if __name__ == "__main__":
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     ]
 
     with open('{}.csv'.format(nid), 'w') as fp:
-        writer = csv.writer(fp)
+        writer = csv.writer(fp, quoting=csv.QUOTE_ALL)
         writer.writerow(csv_row)
         for i, j in my_tsks:
             if i is True:
