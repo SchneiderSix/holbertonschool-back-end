@@ -2,8 +2,8 @@
 """
 Module 1-export_to_CSV
 """
-import requests
 import json
+import requests
 from sys import argv
 import csv
 
@@ -18,7 +18,6 @@ if __name__ == "__main__":
     us = json.loads(usrs.text)
     res_us = {}
     counter = 0
-    csv_list = []
     csv_row = []
     nid = int(argv[1])
 
@@ -34,22 +33,21 @@ if __name__ == "__main__":
         if "completed" or "title" in i
     ]
 
-    for i, j in my_tsks:
-        if i is True:
-            csv_row.append("{}".format(nid))
-            csv_row.append("{}".format(name_us))
-            csv_row.append("True")
-            csv_row.append("{}".format(j))
-            csv_list.append(csv_row)
-            csv_row = []
-        else:
-            csv_row.append("{}".format(nid))
-            csv_row.append("{}".format(name_us))
-            csv_row.append("False")
-            csv_row.append("{}".format(j))
-            csv_list.append(csv_row)
-            csv_row = []
-
     with open('{}.csv'.format(nid), 'w') as fp:
         writer = csv.writer(fp)
-        writer.writerow(csv_list)
+        writer.writerow(csv_row)
+        for i, j in my_tsks:
+            if i is True:
+                csv_row.append("{}".format(nid))
+                csv_row.append("{}".format(name_us))
+                csv_row.append("True")
+                csv_row.append("{}".format(j))
+                writer.writerow(csv_row)
+                csv_row = []
+            else:
+                csv_row.append("{}".format(nid))
+                csv_row.append("{}".format(name_us))
+                csv_row.append("False")
+                csv_row.append("{}".format(j))
+                writer.writerow(csv_row)
+                csv_row = []
